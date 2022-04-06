@@ -1,0 +1,33 @@
+version: "3.9"
+    
+services:
+  database:
+    image: mariadb:latest
+    volumes:
+      - ../../data/wordpress/database:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: prestashop
+      MYSQL_USER: prestashop
+      MYSQL_PASSWORD: prestashop
+    
+  server:
+    depends_on:
+      - database
+    image: prestashop/prestashop:latest
+    volumes:
+      - ../../data/prestashop/server:/var/www/html
+    ports:
+      - '80:80'
+    restart: always
+    environment:
+      PS_DEV_MODE: 1
+      DB_SERVER: database
+      DB_USER: prestashop
+      DB_PASSWD: prestashop
+      DB_NAME: prestashop
+      PS_INSTALL_AUTO: 0
+volumes:
+  database: {}
+  server: {}
