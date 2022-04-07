@@ -2,16 +2,24 @@ version: "3.9"
     
 services:
   database:
-    image: mariadb:latest
+    image: mysql:latest
     volumes:
-      - ../../data/wordpress/database:/var/lib/mysql
+      - ../../data/prestashop/database:/var/lib/mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: prestashop
       MYSQL_USER: prestashop
       MYSQL_PASSWORD: prestashop
-    
+
+  phpmyadmin:
+    depends_on:
+      - database
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - '8000:80'
+    restart: always
+
   server:
     depends_on:
       - database
