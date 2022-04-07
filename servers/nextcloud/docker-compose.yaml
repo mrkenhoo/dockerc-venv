@@ -12,6 +12,14 @@ services:
       - MYSQL_USER=ncmgr
       - MYSQL_PASSWORD=Te@rr@str0
 
+  phpmyadmin:
+    depends_on:
+      - database
+    image: phpmyadmin:latest
+    restart: always
+    ports:
+      - '8000:80'
+
   server:
     image: nextcloud:latest
     restart: always
