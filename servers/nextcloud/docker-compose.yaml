@@ -2,15 +2,15 @@ version: '3.9'
 
 services:
   database:
-    image: mysql:latest
+    image: mariadb:latest
     restart: always
     volumes:
       - ../../data/nextcloud/database:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=Usr@dm1n
+      - MYSQL_ROOT_PASSWORD=p@ssw0rd
       - MYSQL_DATABASE=nextcloud
-      - MYSQL_USER=ncmgr
-      - MYSQL_PASSWORD=Te@rr@str0
+      - MYSQL_USER=nextcloud
+      - MYSQL_PASSWORD=p@ssw0rd
 
   phpmyadmin:
     depends_on:
@@ -27,12 +27,12 @@ services:
       - ../../data/nextcloud/server:/var/www/html
     environment:
       - MYSQL_DATABASE=nextcloud
-      - MYSQL_USER=ncmgr
-      - MYSQL_PASSWORD=Te@rr@str0
+      - MYSQL_USER=nextcloud
+      - MYSQL_PASSWORD=p@ssw0rd
       - MYSQL_HOST=database
-      - NEXTCLOUD_ADMIN_USER=manager
-      - NEXTCLOUD_ADMIN_PASSWORD=Usrm@n@g3r
-      - NEXTCLOUD_TRUSTED_DOMAINS='localhost, 172.16.0.*'
+      - NEXTCLOUD_ADMIN_USER=admin
+      - NEXTCLOUD_ADMIN_PASSWORD=p@ssw0rd
+      - NEXTCLOUD_TRUSTED_DOMAINS='localhost'
     depends_on:
       - database
     ports:

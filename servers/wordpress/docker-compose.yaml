@@ -1,4 +1,4 @@
-version: "3.9"
+version: '3.9'
     
 services:
   database:
@@ -7,10 +7,10 @@ services:
       - ../../data/wordpress/database:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_ROOT_PASSWORD: p@ssw0rd
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
+      MYSQL_PASSWORD: p@ssw0rd
     
   server:
     depends_on:
@@ -24,7 +24,7 @@ services:
     environment:
       WORDPRESS_DB_HOST: database
       WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_PASSWORD: p@ssw0rd
       WORDPRESS_DB_NAME: wordpress
 volumes:
   database: {}

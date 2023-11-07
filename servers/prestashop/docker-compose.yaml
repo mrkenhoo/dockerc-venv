@@ -1,16 +1,16 @@
-version: "3.9"
+version: '3.9'
     
 services:
   database:
-    image: mysql:latest
+    image: mariadb:latest
     volumes:
       - ../../data/prestashop/database:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_ROOT_PASSWORD: p@ssw0rd
       MYSQL_DATABASE: prestashop
       MYSQL_USER: prestashop
-      MYSQL_PASSWORD: prestashop
+      MYSQL_PASSWORD: p@ssw0rd
 
   phpmyadmin:
     depends_on:
