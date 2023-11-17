@@ -15,7 +15,7 @@ services:
   phpmyadmin:
     depends_on:
       - database
-    image: phpmyadmin/phpmyadmin:latest
+    image: phpmyadmin:latest
     ports:
       - '8000:80'
     restart: always
